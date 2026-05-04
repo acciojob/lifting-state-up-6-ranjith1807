@@ -10,10 +10,13 @@ function App() {
   ]);
 
   // Function to update completion state
-  const handleComplete = (id) => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: true } : todo
-    ));
+ const handleComplete = (id) => {
+    // We MUST return a NEW array via .map() so React detects the change
+    setTodos(prevTodos => 
+      prevTodos.map(todo => 
+        todo.id === id ? { ...todo, completed: true } : todo
+      )
+    );
   };
 
   return (
