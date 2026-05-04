@@ -3,17 +3,17 @@ import React from 'react';
 function TodoList({ todos, handleComplete }) {
   return (
     <div>
-      <h2>Child Component</h2>
-      <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
+      <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>
+          <li key={todo.id} data-testid={`todo-${todo.id}`}>
             {todo.text}
-            {/* 
-               CRITICAL: The button must only render if 'completed' is false.
-               This ensures the button is deleted from the DOM after clicking.
-            */}
+
+            {/* Button only appears if NOT completed */}
             {!todo.completed && (
-              <button onClick={() => handleComplete(todo.id)}>
+              <button
+                data-testid={`complete-${todo.id}`}
+                onClick={() => handleComplete(todo.id)}
+              >
                 Complete
               </button>
             )}
