@@ -4,20 +4,16 @@ function TodoList({ todos, handleComplete }) {
   return (
     <div>
       <h2>Child Component</h2>
-      {/* Use a standard list with no extra indentation for straight alignment */}
       <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
         {todos.map((todo) => (
-          <li key={todo.id} style={{ marginBottom: '5px' }}>
+          <li key={todo.id}>
             {todo.text}
             {/* 
-                This condition is critical: 
-                The button must ONLY render if todo.completed is false.
+               CRITICAL: The button must only render if 'completed' is false.
+               This ensures the button is deleted from the DOM after clicking.
             */}
             {!todo.completed && (
-              <button 
-                onClick={() => handleComplete(todo.id)}
-                style={{ marginLeft: '10px' }}
-              >
+              <button onClick={() => handleComplete(todo.id)}>
                 Complete
               </button>
             )}
