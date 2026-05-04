@@ -3,15 +3,19 @@ import React from 'react';
 function TodoList({ todos, handleComplete }) {
   return (
     <div>
-      <h2 style={{paddingLeft:'20px'}}>Child Component</h2>
-      <ul style={{ listStyleType: 'disc', paddingLeft: '20px'}}>
+      <h2>Child Component</h2>
+      {/* Use a standard list with no extra indentation for straight alignment */}
+      <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
         {todos.map((todo) => (
-          <li key={todo.id} style={{ marginBottom: '10px' }}>
+          <li key={todo.id} style={{ marginBottom: '5px' }}>
             {todo.text}
-            {/* Logic: Button only exists if completed is false */}
+            {/* 
+                This condition is critical: 
+                The button must ONLY render if todo.completed is false.
+            */}
             {!todo.completed && (
               <button 
-                onClick={() => handleComplete(todo.id)} 
+                onClick={() => handleComplete(todo.id)}
                 style={{ marginLeft: '10px' }}
               >
                 Complete
