@@ -1,21 +1,28 @@
-import React from 'react';
+import React from "react";
 
-function TodoList({ todos, handleComplete }) {
+const TodoList = ({ todos, handleComplete }) => {
   return (
     <div>
-    <h2 style={{paddingLeft:'40px'}}>Child Component</h2>
-    <ul>
-      {todos.map((todo) => (
-        <li key={todo.id}>
-          {todo.text}
-          <button onClick={() => handleComplete(todo.id)}>
-            Complete
-          </button>
-        </li>
-      ))}
-    </ul>
+      <h2>Child Component</h2>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            {todo.text}
+            
+            {/* Conditionally render the button only if the item is NOT completed */}
+            {!todo.completed && (
+              <button 
+                style={{ marginLeft: "10px" }} 
+                onClick={() => handleComplete(todo.id)}
+              >
+                Complete
+              </button>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
 export default TodoList;
