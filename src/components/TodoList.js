@@ -1,18 +1,19 @@
-import React from "react";
+import React from 'react';
 
-const TodoList = ({ todos, handleComplete }) => {
+function TodoList({ todos, handleComplete }) {
   return (
     <div>
       <h2>Child Component</h2>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            {todo.text} 
+            {todo.text}
+            {/* 
+              CRITICAL: The button must be conditionally rendered.
+              The test fails if the button exists in the DOM after the click.
+            */}
             {!todo.completed && (
-              <button 
-                data-testid={todo.id} /* Add this line for your tests! */
-                onClick={() => handleComplete(todo.id)}
-              >
+              <button onClick={() => handleComplete(todo.id)}>
                 Complete
               </button>
             )}
@@ -21,6 +22,6 @@ const TodoList = ({ todos, handleComplete }) => {
       </ul>
     </div>
   );
-};
+}
 
 export default TodoList;
