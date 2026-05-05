@@ -3,9 +3,9 @@ import TodoList from "./TodoList";  // adjust path if needed
 
 const App = () => {
   const [todos, setTodos] = useState([
-    { id: 1, text: "Learn React", completed: false },
-    { id: 2, text: "Build a todo app", completed: false },
-    // ... more initial todos as per the test
+    { id: 1, text: 'Learn React', completed: false },
+    { id: 2, text: 'Build a React app', completed: false },
+    { id: 3, text: 'Deploy the React app', completed: false }
   ]);
 
   const handleComplete = (id) => {
@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Parent Component - Todo App</h1>
+      <h1>Parent Component</h1>
       <TodoList todos={todos} handleComplete={handleComplete} />
     </div>
   );
