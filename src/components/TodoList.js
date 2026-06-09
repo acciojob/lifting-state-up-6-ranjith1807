@@ -1,15 +1,13 @@
-import React from 'react';
+import React from "react";
 
 const TodoList = ({ todos, handleComplete }) => {
   return (
     <ul>
-      {todos.map(todo => (
+      {todos.map((todo) => (
         <li key={todo.id}>
-          <span>
-            {todo.text}
-          </span>
+          <span>{todo.text}</span>
           
-          {/* CONDITIONAL RENDERING: Button only exists if the todo is NOT completed */}
+          {/* The button ONLY renders if completed is false */}
           {!todo.completed && (
             <button onClick={() => handleComplete(todo.id)}>
               Complete
