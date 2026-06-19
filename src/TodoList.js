@@ -1,25 +1,25 @@
 import React from 'react';
 import './App.css';
 
-// Child component: receives `todos` (data) and `handleComplete` (function)
-// from the parent via props. It does NOT own the todos state itself —
-// it only reads it and calls the parent's function to request a change.
 function TodoList({ todos, handleComplete }) {
   return (
     <ul className="todo-list">
       {todos.map((todo) => (
         <li
           key={todo.id}
+          data-testid={`todo-item-${todo.id}`}
           className={`todo-item ${todo.completed ? 'completed' : ''}`}
         >
           <span className="todo-text">{todo.text}</span>
 
-          {/* Conditional rendering: only show the button if not completed */}
           {todo.completed ? (
-            <span className="status-badge">Completed</span>
+            <span className="status-badge" data-testid={`status-${todo.id}`}>
+              Completed
+            </span>
           ) : (
             <button
               className="complete-btn"
+              data-testid={`complete-btn-${todo.id}`}
               onClick={() => handleComplete(todo.id)}
             >
               Complete
