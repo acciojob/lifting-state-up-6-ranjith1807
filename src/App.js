@@ -4,9 +4,9 @@ import './App.css';
 
 function App() {
   const [todos, setTodos] = useState([
-    { id: 1, text: 'Learn React', completed: false },
+    { id: 1, text: 'Learn React', completed: true },
     { id: 2, text: 'Build a React app', completed: false },
-    { id: 3, text: 'Deploy the React app', completed: false },
+    { id: 3, text: 'Deploy the React app', completed: true },
   ]);
 
   const handleComplete = (id) => {
