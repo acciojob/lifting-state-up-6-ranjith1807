@@ -7,8 +7,8 @@ function App() {
   ]);
 
   const handleComplete = (id) => {
-    setTodos(
-      todos.map((todo) =>
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
         todo.id === id ? { ...todo, completed: true } : todo
       )
     );
