@@ -1,27 +1,24 @@
-import React, { useState } from 'react';
-import TodoList from './TodoList';
+import React, { useState } from "react";
+import TodoList from "./TodoList";
 
 function App() {
-  // Initialize the todos state with mock data
   const [todos, setTodos] = useState([
-    { id: 1, text: 'Learn React Basics', isCompleted: false },
-    { id: 2, text: 'Master Lifting State Up', isCompleted: false },
-    { id: 3, text: 'Build a Todo App', isCompleted: true },
+    { id: 1, text: "Learn React", completed: false },
+    { id: 2, text: "Practice lifting state up", completed: false },
+    { id: 3, text: "Build todo app", completed: false }
   ]);
 
-  // Function to update the completion state of a specific todo
   const handleComplete = (id) => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, isCompleted: true } : todo
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: true } : todo
       )
     );
   };
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h1>Parent Component: Todo Manager</h1>
-      {/* Pass state and handler function down as props */}
+    <div>
+      <h1>Todo App</h1>
       <TodoList todos={todos} handleComplete={handleComplete} />
     </div>
   );
