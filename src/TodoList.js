@@ -20,7 +20,6 @@ function TodoList({ todos, handleComplete }) {
               backgroundColor: todo.isCompleted ? '#e6ffe6' : '#fff',
             }}
           >
-            {/* Conditional styling to strike through text if completed */}
             <span
               style={{
                 textDecoration: todo.isCompleted ? 'line-through' : 'none',
@@ -30,9 +29,10 @@ function TodoList({ todos, handleComplete }) {
               {todo.text}
             </span>
 
-            {/* Conditional rendering: show button only if item is NOT completed */}
+            {/* Conditional rendering: Added data-testid for the test environment */}
             {!todo.isCompleted && (
               <button
+                data-testid={`complete-btn-${todo.id}`}
                 onClick={() => handleComplete(todo.id)}
                 style={{
                   padding: '5px 10px',
